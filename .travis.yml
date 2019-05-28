@@ -4,3 +4,9 @@ language: bash
 
 services:
   - docker
+
+install:
+  - docker-compose build dev
+
+script:
+  - docker-compose run --rm dev composer tests
