@@ -1,7 +1,10 @@
 {
     "require": {
         "php": "^7.2",
-        "phpunit/phpunit": "^7.5"
+        "phpunit/phpunit": "^7.5",
+        "squizlabs/php_codesniffer": "^3.4",
+        "slevomat/coding-standard": "^5.0",
+        "phpstan/phpstan-shim": "^0.11.8"
     },
     "autoload": {
         "psr-4": {
@@ -11,8 +14,12 @@
     },
     "scripts": {
         "tests": [
+            "@phpcs",
+            "@phpstan",
             "@unit"
         ],
+        "phpcs": "vendor/bin/phpcs --colors src tests",
+        "phpstan": "vendor/bin/phpstan analyse --level=max --no-progress -c phpstan.neon src tests",
         "unit": "vendor/bin/phpunit"
     }
 }
