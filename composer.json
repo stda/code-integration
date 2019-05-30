@@ -4,7 +4,9 @@
         "phpunit/phpunit": "^7.5"
     },
     "scripts": {
-        "tests": "@unit",
-        "unit": "phpunit /code/tests/unit"
+        "tests": [
+            "@unit"
+        ],
+        "unit": "vendor/bin/phpunit"
     }
 }

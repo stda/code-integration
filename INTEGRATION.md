@@ -1,4 +1,0 @@
-# Integration goals
-
-- apiary
-- travis

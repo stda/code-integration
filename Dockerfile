@@ -19,13 +19,14 @@ RUN pecl channel-update pecl.php.net \
     && pecl install xdebug \
     && docker-php-ext-enable xdebug
 
-COPY . /code
-WORKDIR /code
 
 # install composer
-RUN chmod +x docker/composer-install.sh
-RUN docker/composer-install.sh
+COPY docker/composer-install.sh /tmp/composer-install.sh
+RUN chmod +x /tmp/composer-install.sh
+RUN /tmp/composer-install.sh
 
+WORKDIR /code
 
+COPY . /code/
 # run normal composer - all deps are cached already
 RUN composer install $COMPOSER_FLAGS
